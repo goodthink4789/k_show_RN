@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "248623645997",
+    "project_id": "kshow-c7c84",
+    "storage_bucket": "kshow-c7c84.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:248623645997:android:d3fab739c735d5dcc97fa4",
+        "android_client_info": {
+          "package_name": "com.kshow"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB69SnvHe0X3Fn5EQULweF6f4i3LB0VWhw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:248623645997:android:b25b8eea0906ae60c97fa4",
+        "android_client_info": {
+          "package_name": "com.kshow_rn"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB69SnvHe0X3Fn5EQULweF6f4i3LB0VWhw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
