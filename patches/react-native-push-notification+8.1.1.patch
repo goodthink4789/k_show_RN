@@ -1,0 +1,29 @@
+diff --git a/node_modules/react-native-push-notification/android/src/main/java/com/dieam/reactnativepushnotification/modules/RNPushNotificationActions.java b/node_modules/react-native-push-notification/android/src/main/java/com/dieam/reactnativepushnotification/modules/RNPushNotificationActions.java
+--- a/node_modules/react-native-push-notification/android/src/main/java/com/dieam/reactnativepushnotification/modules/RNPushNotificationActions.java
++++ b/node_modules/react-native-push-notification/android/src/main/java/com/dieam/reactnativepushnotification/modules/RNPushNotificationActions.java
+@@ -19,6 +19,8 @@
+ import static com.dieam.reactnativepushnotification.modules.RNPushNotification.KEY_TEXT_REPLY;
+ 
+ public class RNPushNotificationActions extends BroadcastReceiver {
++    // The only protected broadcast below is guarded to Android < 12.
++    @android.annotation.SuppressLint("MissingPermission")
+     @Override
+     public void onReceive(final Context context, Intent intent) {
+       String intentActionPrefix = context.getPackageName() + ".ACTION_";
+@@ -62,7 +64,15 @@
+ 
+           helper.invokeApp(bundle);
+ 
+-          context.sendBroadcast(new Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
++          // Android 12+ closes the notification shade when launching the app.
++          // Sending this deprecated broadcast on those versions can crash.
++          if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.S) {
++              try {
++                  context.sendBroadcast(new Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
++              } catch (SecurityException exception) {
++                  Log.w(LOG_TAG, "System dialog dismissal was denied", exception);
++              }
++          }
+       } else {
+ 
+         // We need to run this on the main thread, as the React code assumes that is true.

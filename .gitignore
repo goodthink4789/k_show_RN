@@ -161,3 +161,6 @@ node_modules/.cache/
 # Troubleshooting documentation  
 TROUBLESHOOTING.md
 backups
+
+# Keep the restored iOS dependency resolution reproducible.
+!ios/Podfile.lock
