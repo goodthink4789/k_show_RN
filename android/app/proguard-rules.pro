@@ -8,3 +8,8 @@
 #   http://developer.android.com/guide/developing/tools/proguard.html
 
 # Add any project specific keep options here:
+
+# React Native 0.78 loads these classes by name from react_devsupportjni,
+# including in release builds when InspectorFlags initializes.
+-keep class com.facebook.react.devsupport.CxxInspectorPackagerConnection { *; }
+-keep class com.facebook.react.devsupport.CxxInspectorPackagerConnection$* { *; }
